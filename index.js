@@ -15,7 +15,7 @@
 
       var count = Number(document.querySelector('.photos-count').firstChild.textContent);
       var description = date + "，共" + count + "张图片（视频）";
-      var image = document.querySelector('app-gallery-grid-photo img').src + document.location.search;
+      var image = document.querySelector('app-gallery-grid-photo img').src.split('/thumbnail/')[0] + '/thumbnail/300' + document.location.search;
 
       addProperty('og:type', 'website');
       addProperty('og:title', title);
