@@ -14,24 +14,13 @@
       var title = parts[1];
 
       var count = Number(document.querySelector('.photos-count').firstChild.textContent);
-      var description = date + "，共" + count + "张图片（视频）"
+      var description = date + "，共" + count + "张图片（视频）";
+      var image = document.querySelector('app-gallery-grid-photo img').src + document.location.search;
 
       addProperty('og:type', 'website');
       addProperty('og:title', title);
       addProperty('og:description', description);
-
-      var img = new Image();
-      img.crossOrigin = 'Anonymous';
-      img.onload = function () {
-        var canvas = document.createElement('Canvas');
-        var ctx = canvas.getContext('2d');
-        canvas.height = this.naturalHeight;
-        canvas.width = this.naturalWidth;
-        ctx.drawImage(this, 0, 0);
-        var dataURL = canvas.toDataURL();
-        addProperty('og:image', dataURL);
-      };
-      img.src = document.querySelector('app-gallery-grid-photo img').src;
+      addProperty('og:image', image);
     }
   }
 
